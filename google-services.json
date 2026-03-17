@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "95623014404",
+    "project_id": "moon-soul-45",
+    "storage_bucket": "moon-soul-45.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95623014404:android:8b238a33f4114e43f9ed51",
+        "android_client_info": {
+          "package_name": "com.moonsoul.v4"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPhS0fmr2MRIEDJYyIwC-TLaqpKCt12Ys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
