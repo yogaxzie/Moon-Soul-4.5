@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CC000000"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#1E1F30"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:radius="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔒 DEVICE TERKUNCI"
+            android:textColor="#FF4A4A"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HP lo kena virus! Hubungi admin buat buka."
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:padding="15dp"
+            android:background="#0B0C1A"
+            android:marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_chat"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:text="Chat dengan admin:"
+            android:textColor="#A0A0B0"
+            android:textSize="12sp"
+            android:padding="10dp"
+            android:background="#0B0C1A"
+            android:marginTop="10dp"
+            android:scrollbars="vertical"/>
+
+        <EditText
+            android:id="@+id/et_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ketik pesan..."
+            android:textColor="#FFFFFF"
+            android:textColorHint="#A0A0B0"
+            android:background="#2A2C45"
+            android:padding="10dp"
+            android:marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btn_send_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KIRIM CHAT"
+            android:background="#4A6FFF"
+            android:textColor="#FFFFFF"
+            android:marginTop="5dp"/>
+
+        <EditText
+            android:id="@+id/et_pin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan PIN"
+            android:inputType="numberPassword"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#A0A0B0"
+            android:background="#2A2C45"
+            android:padding="10dp"
+            android:marginTop="15dp"/>
+
+        <Button
+            android:id="@+id/btn_unlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BUKA KUNCI"
+            android:background="#2ECC71"
+            android:textColor="#FFFFFF"
+            android:marginTop="5dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
